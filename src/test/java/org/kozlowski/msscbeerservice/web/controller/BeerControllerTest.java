@@ -30,7 +30,7 @@ class BeerControllerTest {
     @BeforeEach
     void setUp() {
         validBeer = BeerDto.builder()
-                .beerName("Valid Beer")
+//                .beerName("Valid Beer")
                 .beerStyle(BeerStyleEnum.STOUT)
                 .upc(105L)
                 .price(new BigDecimal("12.95"))

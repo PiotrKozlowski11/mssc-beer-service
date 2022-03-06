@@ -1,6 +1,6 @@
-package org.kozlowski.msscbeerservice.web.repositories;
+package org.kozlowski.msscbeerservice.repositories;
 
-import org.kozlowski.msscbeerservice.web.domain.Beer;
+import org.kozlowski.msscbeerservice.domain.Beer;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.UUID;

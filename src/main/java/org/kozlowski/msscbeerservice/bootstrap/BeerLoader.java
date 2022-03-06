@@ -1,7 +1,7 @@
-package org.kozlowski.msscbeerservice.web.bootstrap;
+package org.kozlowski.msscbeerservice.bootstrap;
 
-import org.kozlowski.msscbeerservice.web.domain.Beer;
-import org.kozlowski.msscbeerservice.web.repositories.BeerRepository;
+import org.kozlowski.msscbeerservice.domain.Beer;
+import org.kozlowski.msscbeerservice.repositories.BeerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

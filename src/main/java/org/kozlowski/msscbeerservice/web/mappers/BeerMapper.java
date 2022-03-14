@@ -16,4 +16,7 @@ public interface BeerMapper {
 
     @Mapping(target = "quantityOnHand", ignore = true)
     BeerDto beerToBeerDto(Beer beer);
+
+    @Mapping(target = "quantityOnHand", ignore = true)
+    BeerDto beerToBeerDtoWithInventory(Beer beer);
 }

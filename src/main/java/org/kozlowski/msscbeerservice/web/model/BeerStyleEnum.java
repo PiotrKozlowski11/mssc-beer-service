@@ -6,5 +6,7 @@ public enum BeerStyleEnum {
     ALE,
     STOUT,
     GOSE,
-    IPA
+    IPA,
+    PALE_ALE,
+    PORTER
 }

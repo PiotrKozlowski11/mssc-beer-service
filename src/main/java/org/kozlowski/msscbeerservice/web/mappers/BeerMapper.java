@@ -2,10 +2,12 @@ package org.kozlowski.msscbeerservice.web.mappers;
 
 import org.kozlowski.msscbeerservice.domain.Beer;
 import org.kozlowski.msscbeerservice.web.model.BeerDto;
+import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(uses = {DateMapper.class})
+@DecoratedWith(BeerMapperDecorator.class)
 public interface BeerMapper {
 
     @Mapping(target = "quantityToBrew", ignore = true)

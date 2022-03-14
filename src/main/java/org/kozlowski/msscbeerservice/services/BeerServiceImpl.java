@@ -112,4 +112,12 @@ public class BeerServiceImpl implements BeerService {
 
         return beerPagedList;
     }
+
+    @Cacheable(cacheNames = "beerCache", key = "#upc")
+    @Override
+    public BeerDto getByUpc(String upc) {
+        Beer beer = beerRepository.findByUpcIsIgnoreCase(upc)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("Beer for upc %s not found", upc)));
+        return beerMapper.beerToBeerDtoWithInventory(beer);
+    }
 }

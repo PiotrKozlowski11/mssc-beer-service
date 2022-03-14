@@ -1,11 +1,13 @@
 package org.kozlowski.msscbeerservice.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.kozlowski.msscbeerservice.domain.Beer;
 import org.kozlowski.msscbeerservice.repositories.BeerRepository;
 import org.kozlowski.msscbeerservice.web.mappers.BeerMapper;
 import org.kozlowski.msscbeerservice.web.model.BeerDto;
 import org.kozlowski.msscbeerservice.web.model.BeerPagedList;
 import org.kozlowski.msscbeerservice.web.model.BeerStyleEnum;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+@Slf4j
 @Service
 public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
@@ -25,6 +28,7 @@ public class BeerServiceImpl implements BeerService {
         this.beerMapper = beerMapper;
     }
 
+    @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand == false ")
     @Override
     public BeerDto getById(UUID beerId, Boolean showInventoryOnHand) {
         Beer beer = beerRepository.findById(beerId)
@@ -60,8 +64,11 @@ public class BeerServiceImpl implements BeerService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand == false ")
     @Override
     public BeerPagedList listBeers(String beerName, BeerStyleEnum beerStyle, PageRequest of, Boolean showInventoryOnHand) {
+
+        log.info("Listing beers");
 
         BeerPagedList beerPagedList;
         Page<Beer> beerPage;

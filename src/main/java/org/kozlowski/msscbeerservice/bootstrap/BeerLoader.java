@@ -1,12 +1,15 @@
 package org.kozlowski.msscbeerservice.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.kozlowski.msscbeerservice.domain.Beer;
 import org.kozlowski.msscbeerservice.repositories.BeerRepository;
+import org.kozlowski.msscbeerservice.web.model.BeerStyleEnum;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Slf4j
 @Component
 public class BeerLoader implements CommandLineRunner {
     public static final String BEER_1_UPC = "0631234200036";
@@ -29,7 +32,7 @@ public class BeerLoader implements CommandLineRunner {
 
             beerRepository.save(Beer.builder()
                     .beerName("Mango Bobs")
-                    .beerStyle("IPA")
+                    .beerStyle(BeerStyleEnum.IPA.name())
                     .quantityToBrew(200)
                     .minOnHand(12)
                     .upc(BEER_1_UPC)
@@ -38,7 +41,7 @@ public class BeerLoader implements CommandLineRunner {
 
             beerRepository.save(Beer.builder()
                     .beerName("Galaxy Cat")
-                    .beerStyle("PALE_ALE")
+                    .beerStyle(BeerStyleEnum.PALE_ALE.name())
                     .quantityToBrew(200)
                     .minOnHand(12)
                     .upc(BEER_2_UPC)
@@ -47,7 +50,7 @@ public class BeerLoader implements CommandLineRunner {
 
             beerRepository.save(Beer.builder()
                     .beerName("No Hammers On The Bar")
-                    .beerStyle("PALE_ALE")
+                    .beerStyle(BeerStyleEnum.PALE_ALE.name())
                     .quantityToBrew(200)
                     .minOnHand(12)
                     .upc(BEER_3_UPC)
@@ -58,5 +61,6 @@ public class BeerLoader implements CommandLineRunner {
         }
 
         System.out.println("Loaded Beers: " + beerRepository.count());
+        log.info("Loaded Beers: " + beerRepository.count());
     }
 }

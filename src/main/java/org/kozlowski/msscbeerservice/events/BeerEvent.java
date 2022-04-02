@@ -10,10 +10,13 @@ import java.io.Serializable;
 @Builder
 public class BeerEvent implements Serializable {
 
-    private final BeerDto beerDto;
+    private BeerDto beerDto;
 
     public BeerEvent(BeerDto beerDto) {
         this.beerDto = beerDto;
+    }
+
+    public BeerEvent() {
     }
 }
 

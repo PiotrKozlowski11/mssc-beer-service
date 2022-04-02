@@ -1,4 +1,4 @@
-package org.kozlowski.msscbeerservice.services;
+package org.kozlowski.msscbeerservice.services.brewing;
 
 import lombok.extern.slf4j.Slf4j;
 import org.kozlowski.msscbeerservice.config.JmsConfig;

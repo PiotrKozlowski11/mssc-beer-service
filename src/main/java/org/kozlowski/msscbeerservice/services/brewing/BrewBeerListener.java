@@ -1,10 +1,10 @@
 package org.kozlowski.msscbeerservice.services.brewing;
 
 import lombok.extern.slf4j.Slf4j;
+import org.kozlowski.common.events.BrewBeerEvent;
+import org.kozlowski.common.events.NewInventoryEvent;
 import org.kozlowski.msscbeerservice.config.JmsConfig;
 import org.kozlowski.msscbeerservice.domain.Beer;
-import org.kozlowski.msscbeerservice.events.BrewBeerEvent;
-import org.kozlowski.msscbeerservice.events.NewInventoryEvent;
 import org.kozlowski.msscbeerservice.repositories.BeerRepository;
 import org.kozlowski.msscbeerservice.web.model.BeerDto;
 import org.springframework.jms.annotation.JmsListener;

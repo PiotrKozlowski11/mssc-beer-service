@@ -1,4 +1,4 @@
-package org.kozlowski.msscbeerservice.events;
+package org.kozlowski.common.events;
 
 import org.kozlowski.msscbeerservice.web.model.BeerDto;
 

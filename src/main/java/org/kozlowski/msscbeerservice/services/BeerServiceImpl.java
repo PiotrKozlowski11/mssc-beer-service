@@ -59,7 +59,7 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public List<BeerDto> findAll() {
-        return StreamSupport.stream(beerRepository.findAll().spliterator(), false)
+        return beerRepository.findAll().stream()
                 .map(beerMapper::beerToBeerDto)
                 .collect(Collectors.toList());
     }

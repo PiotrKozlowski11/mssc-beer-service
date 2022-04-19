@@ -3,7 +3,7 @@ package org.kozlowski.msscbeerservice.services.brewing;
 import lombok.extern.slf4j.Slf4j;
 import org.kozlowski.msscbeerservice.config.JmsConfig;
 import org.kozlowski.msscbeerservice.domain.Beer;
-import org.kozlowski.msscbeerservice.events.BrewBeerEvent;
+import org.kozlowski.common.events.BrewBeerEvent;
 import org.kozlowski.msscbeerservice.repositories.BeerRepository;
 import org.kozlowski.msscbeerservice.services.inventory.BeerInventoryService;
 import org.kozlowski.msscbeerservice.web.mappers.BeerMapper;
@@ -34,11 +34,11 @@ public class BrewingService {
         List<Beer> beers = beerRepository.findAll();
 
         beers.forEach(beer -> {
-            Integer invQOH = beerInventoryService.getOnHandInventory(beer.getId());
-            log.debug("Min Onhas is: " + beer.getMinOnHand());
-            log.debug("Inventory is: " + invQOH);
+            Integer onHandInventory = beerInventoryService.getOnHandInventory(beer.getId());
+            log.debug("Min On hands is: " + beer.getMinOnHand());
+            log.debug("Inventory is: " + onHandInventory);
 
-            if (beer.getMinOnHand() >= invQOH) {
+            if (beer.getMinOnHand() >= onHandInventory) {
                 jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
             }
         });

@@ -1,9 +1,9 @@
 package org.kozlowski.msscbeerservice.services.brewing;
 
 import lombok.extern.slf4j.Slf4j;
+import org.kozlowski.common.events.BrewBeerEvent;
 import org.kozlowski.msscbeerservice.config.JmsConfig;
 import org.kozlowski.msscbeerservice.domain.Beer;
-import org.kozlowski.common.events.BrewBeerEvent;
 import org.kozlowski.msscbeerservice.repositories.BeerRepository;
 import org.kozlowski.msscbeerservice.services.inventory.BeerInventoryService;
 import org.kozlowski.msscbeerservice.web.mappers.BeerMapper;
